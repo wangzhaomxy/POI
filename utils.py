@@ -285,5 +285,6 @@ def post_porcess(raw_data, new_data, pred, classes, save_raw, save_new):
     new_data["label"] = predicts
     final_df = pd.merge(raw_data, new_data, how="left", on="TARGET_FID")
     final_df["土地利用"] = final_df["label"]
+    final_df = final_df.drop(["concat", "label"], axis=1)
     final_df.to_csv(save_raw, encoding='utf_8_sig')
     new_data.to_csv(save_new, encoding='utf_8_sig')
