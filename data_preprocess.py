@@ -10,6 +10,7 @@ classes = {"居住用地":0,
 csv_path = "./poi_data/hankou_POI_train.csv"
 save_path = "./poi_data/data/"
 csv_col = ["TARGET_FID", "type_", "name","土地利用"]
+augment_times = 100
 
 # read .csv file, and choose the helpful colomns, and then alter the labels to 
 # numbers.
@@ -34,7 +35,7 @@ X, y = new_data["concat"], new_data["label"]
 X_train, y_train, X_val, y_val, X_test, y_test = data_split(X, y, ratio=(0.8, 0.1, 0.1))
 
 ### Data augmentations
-X_train, y_train = augment_data(X_train, y_train, dup_times=20)
+X_train, y_train = augment_data(X_train, y_train, dup_times=augment_times)
 
 # save datasets
 train_path = save_path + "train.txt"
